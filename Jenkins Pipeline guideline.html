@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jenkins Pipeline guideline</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><p>As an automation tester, I want my automation test script can be executed automatically through an CICD tools such as Jenkins, CircleCI. To do that target, I have to understand about how to install and using Jenkins Pipepline that is about using Jenkinsfile to do the CICD process.</p>
+<h2 id="jenkins-prerequisites"><strong>Jenkins prerequisites</strong></h2>
+<p>Surpose that we use Windows machine to setup jenkins.<br>
+Software requirements:</p>
+<ul>
+<li>
+<p>Java: see the  <a href="https://www.jenkins.io/doc/administration/requirements/java">Java Requirements</a>  page</p>
+</li>
+<li>
+<p>Web browser: see the  <a href="https://www.jenkins.io/doc/administration/requirements/web-browsers">Web Browser Compatibility</a>  page</p>
+</li>
+<li>
+<p>For Windows operating system:  <a href="https://www.jenkins.io/doc/administration/requirements/windows">Windows Support Policy</a><br>
+We can see more requirement <a href="https://www.jenkins.io/doc/book/installing/windows/">here</a></p>
+</li>
+</ul>
+<h2 id="jenkins-installation"><strong>Jenkins installation</strong></h2>
+<ul>
+<li>Download <a href="https://www.jenkins.io/download/thank-you-downloading-windows-installer-stable/">Jenkins.msi</a></li>
+<li>Install the Jenkins.msi. In the installing process, we just slelect suggestion option to install.</li>
+<li>After that, you can access the <a href="https://localhost:8080">localhost:8080</a> to verify the installation.</li>
+<li>DONE!</li>
+</ul>
+<h2 id="create-jenkins-pipeline-ci-process-with-jenkinsfile"><strong>Create Jenkins Pipeline CI process with Jenkinsfile</strong></h2>
+<p>We can read about jenkinsfile <a href="https://www.jenkins.io/doc/book/pipeline/jenkinsfile/">here</a> to get full knowledge about it. In this article, we will learn the way we create a new Jenkins Pipeline project in very basic steps. Therefore, we can understand about it without significant effort. This is the very basic Jenkinsfile in an automation test script. For more details, jenkinsfile is the file that is store in the automation test script.</p>
+<pre><code>pipeline {
+     agent any
+
+    tools{
+        dotnetsdk 'dotnet'
+    }
+
+    stages {
+        stage('Tests') {
+            steps {
+                bat "dotnet test"              
+            }
+        }
+    }
+}
+</code></pre>
+<p>This Jenkinsfile is the CI process for an Dotnet project. It will define the action execute testing with an bat command line <code>donet test</code>. To run the command <code>dotnet</code> we have to add the <code>dotnetsdk</code> tool. To understand about this, we will move one to the examples.</p>
+<h3 id="ci-process-for-dotnet-project">CI process for Dotnet project</h3>
+<p>As an automation tester, I want to create a CI process that help me to run it automatically and return the results on test runs. To do that, I have to create a Jenkinsfile for the project and install Jenkins’s plugin that consists of <code>Nunit</code> and <code>.NET SDK plugin</code>.</p>
+<h3 id="ci-process-for-maven-project">CI process for Maven project</h3>
+<h3 id="ci-process-for-postman-project">CI process for Postman project</h3>
+</div>
+</body>
+
+</html>
